@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Application</title>
+    <meta name="csrf-token" content="<%= csrfToken %>">
+    <script src="https://cdn.tailwindcss.com"></script>
+     <style>
+    @keyframes gradient-x {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+  
+    .animate-gradient-x {
+      background-size: 200% 200%;
+      animation: gradient-x 3s ease infinite;
+    }
+  
+    .animate-pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+  
+    .backdrop-blur-md {
+      backdrop-filter: blur(8px);
+    }
+  
+    .backdrop-blur-sm {
+      backdrop-filter: blur(4px);
+    }
+
+    @keyframes gradient-x {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  
+    .animate-gradient-x {
+      background-size: 200% 200%;
+      animation: gradient-x 3s ease infinite;
+    }
+  </style>
+  
+</head>
+<body class="bg-emerald-100">
+  <nav class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-emerald-600 p-4 shadow-lg backdrop-blur-sm" style="background-image: url('https://i.ibb.co/4gRHB9B9/pexels-julia-m-cameron-6995017.jpg'); background-size: cover; background-position: center;">
+    <div class="max-w-screen-xl px-4 sm:px-16 mx-auto flex flex-col justify-center items-center">
+      <!-- Futuristic FashionSense Logo with Gradient Animation -->
+      <h1 class="text-white text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-300 via-lime-400 to-emerald-500 animate-gradient-x mb-6 text-center my-6">
+        <a href="/" class="hover:scale-105 transition-transform duration-300 bg-white p-4  rounded bg-opacity-60 text-gray-900">FashionSense</a>
+      </h1>
+    </div>
+  </nav>
+  
+  <nav class="bg-gradient-to-r from-emerald-700 via-emerald-600 to-emerald-500 p-4 shadow-lg backdrop-blur-sm">
+    <div class="max-w-screen-xl px-4 sm:px-16 mx-auto flex flex-col justify-center items-center">
+    
+      <!-- Navigation Links with Hover and Active States -->
+      <div id="nav-menu" class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
+        <a href="/" class="text-white text-xlfont-medium bg-emerald-500/20 backdrop-blur-md hover:bg-emerald-500/40 hover:shadow-lg px-5 py-3 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1">
+          Home
+        </a>
+        <a href="/aiapp" class="text-white text-xlfont-medium bg-emerald-500/20 backdrop-blur-md hover:bg-emerald-500/40 hover:shadow-lg px-5 py-3 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1">
+          Apparel Suggester 
+        </a>
+        <a href="/index" class="text-white text-xlfont-medium bg-emerald-500/20 backdrop-blur-md hover:bg-emerald-500/40 hover:shadow-lg px-5 py-3 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1">
+          Avatar Generator 
+        </a>
+        <a href="/vto" class="text-white text-xlfont-medium bg-emerald-500/20 backdrop-blur-md hover:bg-emerald-500/40 hover:shadow-lg px-5 py-3 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1">
+          Virtual TryOn 
+        </a>
+        <a href="/profile" class="text-white text-xlfont-medium bg-emerald-500/20 backdrop-blur-md hover:bg-emerald-500/40 hover:shadow-lg px-5 py-3 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1">
+          Profile
+        </a>
+        <% if (user && user.role !== 'user') { %>
+          <a href="/admin" class="text-white text-xlfont-medium bg-emerald-500/20 backdrop-blur-md hover:bg-emerald-500/40 hover:shadow-lg px-5 py-3 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1">
+            Admin
+          </a>
+        <% } %>
+        <a href="/logout" class="text-white text-xlfont-medium bg-emerald-500/20 backdrop-blur-md hover:bg-emerald-500/40 hover:shadow-lg px-5 py-3 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1">
+          Logout
+        </a>
+      </div>
+    </div>
+  </nav>
+  
+ 
+  <script>
+    // JavaScript to improve responsiveness
+    document.addEventListener("DOMContentLoaded", function () {
+      const navMenu = document.getElementById("nav-menu");
+      const logo = document.querySelector("h1");
+  
+      function adjustLayout() {
+        if (window.innerWidth < 640) {
+          // Mobile view: Center-align logo and menu
+          logo.classList.add("text-center");
+          navMenu.classList.add("text-center");
+        } else {
+          // Desktop view: Reset alignment
+          logo.classList.remove("text-center");
+          navMenu.classList.remove("text-center");
+        }
+      }
+  
+      // Adjust layout on page load and window resize
+      adjustLayout();
+      window.addEventListener("resize", adjustLayout);
+    });
+  </script>
